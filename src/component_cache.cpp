@@ -49,19 +49,20 @@ uint64_t freeram() {
 #include "stack.h"
 
 
-ComponentCache::ComponentCache(DataAndStatistics &statistics) :
+ComponentCache::ComponentCache(DataAndStatistics &statistics, StaticState* state) :
 		statistics_(statistics) {
+    static_state = state;
 }
 
 void ComponentCache::init(Component &super_comp) {
 
-    cout << sizeof(CacheableComponent) << " " << sizeof(mpz_class) << endl;
-    CacheableComponent &packed_super_comp = *new CacheableComponent(super_comp);
+    //cout << sizeof(CacheableComponent) << " " << sizeof(mpz_class) << endl;
+    CacheableComponent &packed_super_comp = *new CacheableComponent(super_comp, static_state);
 	my_time_ = 1;
 
 	entry_base_.clear();
 	entry_base_.reserve(2000000);
-	entry_base_.push_back(new CacheableComponent()); // dummy Element
+	entry_base_.push_back(new CacheableComponent(static_state)); // dummy Element
 	table_.clear();
 	table_.resize(1024*1024, 0);
 	table_size_mask_ = table_.size() - 1;
@@ -80,10 +81,6 @@ void ComponentCache::init(Component &super_comp) {
 		cout << endl <<" WARNING: Maximum cache size larger than free RAM available" << endl;
 		cout << " Free RAM " << free_ram / 1000000 << "MB" << endl;
 	}
-
-	cout << "Maximum cache size:\t"
-			<< statistics_.maximum_cache_size_bytes_ / 1000000 << " MB" << endl
-			<< endl;
 
 	assert(!statistics_.cache_full());
 

@@ -12,7 +12,7 @@ void ComponentManager::initialize(LiteralIndexedVector<Literal> & literals,
 
   ana_.initialize(literals, lit_pool);
   // BEGIN CACHE INIT
-  CacheableComponent::adjustPackSize(ana_.max_variable_id(), ana_.max_clause_id());
+  adjustPackSize(ana_.max_variable_id(), ana_.max_clause_id());
 
   component_stack_.clear();
   component_stack_.reserve(ana_.max_variable_id() + 2);

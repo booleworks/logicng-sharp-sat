@@ -24,6 +24,3 @@ find_library(GMPXX_LIB gmpxx)
 
 
 add_subdirectory(src)
-
-add_executable (sharpSAT src/main.cpp)
-target_link_libraries (sharpSAT libsharpSAT ${GMP_LIB} ${GMPXX_LIB}) 

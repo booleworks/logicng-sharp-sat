@@ -65,7 +65,7 @@ void AltComponentAnalyzer::initialize(LiteralIndexedVector<Literal> & literals,
     }
   }
 
-  ComponentArchetype::initArrays(max_variable_id_, max_clause_id_);
+  ComponentArchetype::initArrays(max_variable_id_, max_clause_id_, static_state);
   // the unified link list
   unified_variable_links_lists_pool_.clear();
   unified_variable_links_lists_pool_.push_back(0);
