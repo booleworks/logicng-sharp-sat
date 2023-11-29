@@ -7,7 +7,9 @@ SET(SOURCES alt_component_analyzer.cpp
 	instance.cpp
 	new_component_analyzer.cpp
 	solver.cpp
-	statistics.cpp)
+	statistics.cpp
+	interactive_solver.cpp
+)
 
 
 ADD_LIBRARY(libsharpSAT ${SOURCES} component_types)

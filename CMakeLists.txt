@@ -9,7 +9,8 @@ set(CMAKE_CXX_FLAGS_PROFILING "${CMAKE_CXX_FLAGS_PROFILING} -std=c++11 -O3 -g -D
 
 IF(UNIX)
   IF(APPLE)
-    include_directories(/opt/local/include)
+    # include_directories(/opt/local/include)
+    include_directories(/usr/local/Cellar/gmp/6.3.0/include)
   ELSE(APPLE)
     
     
