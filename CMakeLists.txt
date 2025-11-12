@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.24)
-project (SHARPSAT) 
+project (SHARPSAT)
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -std=c++11 -Wall")
 
@@ -9,14 +9,10 @@ set(CMAKE_CXX_FLAGS_PROFILING "${CMAKE_CXX_FLAGS_PROFILING} -std=c++11 -O3 -g -D
 
 IF(UNIX)
   IF(APPLE)
-    IF(CMAKE_APPLE_SILICON_PROCESSOR)
-      include_directories(/opt/homebrew/include/Cellar/gmp/6.3.0/include)
-    ELSE(CMAKE_APPLE_SILICON_PROCESSOR)
-      include_directories(/usr/local/Cellar/gmp/6.3.0/include)
-    ENDIF(CMAKE_APPLE_SILICON_PROCESSOR)
+    include_directories(/usr/local/include)
+    include_directories(/opt/local/include)
   ELSE(APPLE)
-    
-    
+
   ENDIF(APPLE)
 ELSE(UNIX)
 
